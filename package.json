@@ -1,0 +1,30 @@
+{
+    "name": "@buildingkit/hcl",
+    "description": "Parse and stringify HCL",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "gopherjs build ./src -o dist/index.js -m",
+        "test": "jest"
+    },
+    "keywords": [
+        "parse",
+        "stringify",
+        "config",
+        "hcl",
+        "json"
+    ],
+    "author": "Fredrik Forsmo <fredrik.forsmo@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/buildingkit/js-hcl"
+    },
+    "devDependencies": {
+        "jest": "^26.4.0"
+    },
+    "dependencies": {
+        "@babel/core": "^7.11.1",
+        "@jitesoft/babel-preset-main": "^2.5.1",
+        "babel-jest": "^26.3.0",
+        "core-js": "^3.6.5"
+    }
+}

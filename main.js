@@ -57,6 +57,20 @@ class Hcl {
         });
     }
 
+    async stringify(obj) {
+        if (!this._initialized) {
+            await this._initialize();
+        }
+        return new Promise((resolve, reject) => {
+            global.__hcl.stringify(JSON.stringify(obj), (error, data) => {
+                if (error != null && error.length > 0) {
+                    return reject(error);
+                }
+                return resolve(data);
+            })
+        });
+    }
+
     /**
      * Parse HCL and return as a JS object.
      * @param {string|Buffer} str HCL as string.

@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"github.com/hashicorp/hcl"
+	"github.com/hashicorp/hcl/hcl/printer"
 	"syscall/js"
 )
 
@@ -15,6 +17,7 @@ func init() {
 func main() {
 	// Register functions.
 	js.Global().Get("__hcl").Set("parse", js.FuncOf(parse))
+	js.Global().Get("__hcl").Set("stringify", js.FuncOf(stringify))
 	js.Global().Get("__hcl").Set("cleanup", js.FuncOf(cleanup))
 	<- c
 }
@@ -32,6 +35,27 @@ func parse(this js.Value, args []js.Value) interface{} {
 		callback.Invoke(err.Error(), js.Null())
 	}
 	callback.Invoke(js.Null(), string(output))
+	return nil
+}
+
+func stringify(this js.Value, args []js.Value) interface{} {
+
+	callback := args[len(args) -1:][0]
+	ast, err := hcl.ParseBytes([]byte(args[0].String()))
+	if err != nil {
+		callback.Invoke(err.Error(), js.Null())
+		return nil
+	}
+
+	var buf bytes.Buffer
+
+	err = printer.Fprint(&buf, ast.Node)
+	if err != nil {
+		callback.Invoke(err.Error(), js.Null())
+		return nil
+	}
+
+	callback.Invoke(js.Null(), buf.String())
 	return nil
 }
 

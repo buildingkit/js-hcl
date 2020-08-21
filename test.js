@@ -1,4 +1,4 @@
-const Hcl = require('./main');
+const Hcl = require('./bin/main.js');
 const hcl = new Hcl();
 
 const testConfig = `

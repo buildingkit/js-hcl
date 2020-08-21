@@ -1,11 +1,12 @@
 {
   "name": "@buildingkit/hcl",
   "description": "Parse and stringify HCL with JavaScript",
-  "main": "main.js",
+  "main": "bin/main.js",
   "files": [
     "bin/main.wasm"
   ],
   "scripts": {
+    "build": "babel main.js wasm_exec.js -d bin/ --compact true",
     "test": "jest"
   },
   "keywords": [
@@ -28,7 +29,13 @@
     "url": "https://github.com/buildingkit/js-hcl"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@jitesoft/babel-preset-main": "^2.5.1",
+    "@babel/cli": "^7.10.5",
+    "core-js": "^3.6.5",
     "jest": "^26.4.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.11.2"
+  }
 }

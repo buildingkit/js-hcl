@@ -1,5 +1,5 @@
-const fs = require('fs').promises;
-require('./wasm_exec.js');
+import { promises as fs } from 'fs';
+import ('./wasm_exec.js');
 
 class Hcl {
     _initialized = false;

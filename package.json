@@ -1,0 +1,34 @@
+{
+  "name": "@buildingkit/hcl",
+  "description": "Parse and stringify HCL with JavaScript",
+  "main": "main.js",
+  "files": [
+    "bin/main.wasm"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "parse",
+    "stringify",
+    "config",
+    "hcl",
+    "json"
+  ],
+  "maintainers": [
+    {
+      "name": "Johannes Tegnér",
+      "url": "https://jite.eu",
+      "email": "johannes@jitesoft.com"
+    }
+  ],
+  "author": "Fredrik Forsmo <fredrik.forsmo@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/buildingkit/js-hcl"
+  },
+  "devDependencies": {
+    "jest": "^26.4.1"
+  },
+  "dependencies": {}
+}

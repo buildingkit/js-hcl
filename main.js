@@ -12,7 +12,7 @@ class Hcl {
 
     async _initialize() {
         const go = new Go();
-        const buffer = await fs.readFile('./hcl.wasm');
+        const buffer = await fs.readFile('./bin/hcl.wasm');
         if (!go) {
             throw Error('Failed to load the HCL parser.');
         }
@@ -24,15 +24,28 @@ class Hcl {
         this._initialized = true;
     }
 
+    /**
+     * Parse a HCL file and return as a JS object.
+     * @param {string} path Path to HCL file.
+     * @returns {Promise<any>}
+     */
     async parseFile(path) {
         const file = await fs.readFile(path);
         return this.parse(file);
     }
 
+    /**
+     * Destroy the underlying HCL engine.
+     */
     destroy() {
         global.__hcl.cleanup();
     }
 
+    /**
+     * @param str
+     * @returns {Promise<string>}
+     * @private
+     */
     async _innerParse (str) {
         return new Promise((resolve, reject) => {
            global.__hcl.parse(str, (error, data) => {
@@ -44,11 +57,16 @@ class Hcl {
         });
     }
 
+    /**
+     * Parse HCL and return as a JS object.
+     * @param {string|Buffer} str HCL as string.
+     * @returns {Promise<any>}
+     */
     async parse(str) {
         if (!this._initialized) {
             await this._initialize();
         }
-        return this._innerParse(str);
+        return JSON.parse(await this._innerParse(str));
     }
 
 }

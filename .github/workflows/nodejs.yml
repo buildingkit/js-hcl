@@ -22,6 +22,7 @@ jobs:
           go-version: 1.12.16
       - name: npm install, build and test
         run: |
+          export PATH=${PATH}:`go env GOPATH`/bin
           npm install
           npm run build
           npm test

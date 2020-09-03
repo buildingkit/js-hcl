@@ -19,4 +19,5 @@ GO111MODULE=off go get -u github.com/gopherjs/gopherjs
 go mod vendor
 gopherjs build ./src -o dist/index.js -m
 
+npm install
 $(npm bin)/uglifyjs --compress --mangle -o dist/index.js -- dist/index.js

@@ -1,8 +1,6 @@
 # github.com/gopherjs/gopherjs v0.0.0-20200217142428-fce0ec30dd00
-## explicit
 github.com/gopherjs/gopherjs/js
 # github.com/hashicorp/hcl v1.0.0
-## explicit
 github.com/hashicorp/hcl
 github.com/hashicorp/hcl/hcl/ast
 github.com/hashicorp/hcl/hcl/parser
@@ -14,5 +12,4 @@ github.com/hashicorp/hcl/json/parser
 github.com/hashicorp/hcl/json/scanner
 github.com/hashicorp/hcl/json/token
 # github.com/miratronix/jopher v0.0.0-20200228204442-56bcab34f1a3
-## explicit
 github.com/miratronix/jopher

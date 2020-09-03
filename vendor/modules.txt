@@ -30,5 +30,5 @@ github.com/miratronix/jopher
 ## explicit
 # github.com/spf13/pflag v1.0.5
 ## explicit
-# golang.org/dl v0.0.0-20200811212135-d149fc5456ff
+# golang.org/dl v0.0.0-20200901180525-35ca1c5c19fb
 ## explicit

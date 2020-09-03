@@ -7,13 +7,12 @@ if [[ -z "${CI}" ]]; then
 else
   export GOPHERJS_GOROOT="$(go env GOROOT)"
   export PATH=${PATH}:`go env GOPATH`/bin
-  echo $PATH
 fi
 
 # build using gopherjs
 go mod vendor
 go get -u github.com/gopherjs/gopherjs
-gopherjs build ./src -o dist/index.js -m
+GO111MODULE=on gopherjs build ./src -o dist/index.js -m
 
 # minify using uglifyjs
 $(npm bin)/uglifyjs --compress --mangle -o dist/index.js -- dist/index.js

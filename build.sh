@@ -7,7 +7,7 @@ if [[ -z "${CI}" ]]; then
 else
   export GOPHERJS_GOROOT="$(go env GOROOT)"
   export PATH=${PATH}:`go env GOPATH`/bin
-  export SRCDIR=${GOPATH}/src/github.com/buildingkit/js-hcl
+  export SRCDIR=`go env GOPATH`/src/github.com/buildingkit/js-hcl
   export GO111MODULE="on"
   mkdir -p ${SRCDIR}
   mv ${CI_PROJECT_DIR}/* ${SRCDIR}

@@ -14,6 +14,6 @@ else
 fi
 
 cd vendor && ln -s . src && cd ..
-GOPATH=vendor/ gopherjs build ./src -o dist/index.js -m
+GOPATH=vendor/ gopherjs build ./src -o dist/index.js
 
 $(npm bin)/uglifyjs --compress --mangle -o dist/index.js -- dist/index.js

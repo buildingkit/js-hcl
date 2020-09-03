@@ -12,7 +12,7 @@ fi
 
 # build using gopherjs
 go mod vendor
-ls `go env GOPATH`/bin
+ls /opt/hostedtoolcache/go/1.12.16/x64/bin
 gopherjs build ./src -o dist/index.js -m
 
 # minify using uglifyjs

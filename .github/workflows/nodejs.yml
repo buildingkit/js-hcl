@@ -22,11 +22,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: build and test
+      - name: Build
         run: |
           npm install
           npm run build
-          npm test
         env:
           CI: true
+        working-directory: go/src/github.com/buildingkit/js-hcl
+      - name: Test
+        run: |
+          npm run test
         working-directory: go/src/github.com/buildingkit/js-hcl

@@ -10,7 +10,8 @@ else
   export SRCDIR=`go env GOPATH`/src/github.com/buildingkit/js-hcl
   export GO111MODULE="on"
   mkdir -p ${SRCDIR}
-  mv ${CI_PROJECT_DIR}/* ${SRCDIR}
+  echo $GITHUB_WORKSPACE
+  mv ${GITHUB_WORKSPACE}/* ${SRCDIR}
   cd ${SRCDIR}
 fi
 

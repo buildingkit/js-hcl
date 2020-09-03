@@ -24,6 +24,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: build and test
         run: |
+          cd $GITHUB_WORKSPACE
+          npm install
           npm run build
           npm test
         env:

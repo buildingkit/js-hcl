@@ -10,9 +10,10 @@ else
 fi
 
 # build using gopherjs
-go mod vendor
 go get -u github.com/gopherjs/gopherjs
-GO111MODULE=on gopherjs build ./src -o dist/index.js -m
+export GO111MODULE=on
+go mod vendor
+gopherjs build ./src -o dist/index.js -m
 
 # minify using uglifyjs
 $(npm bin)/uglifyjs --compress --mangle -o dist/index.js -- dist/index.js

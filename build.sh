@@ -7,6 +7,8 @@ if [[ -z "${CI}" ]]; then
 else
   export GOPHERJS_GOROOT="$(go env GOROOT)"
   export PATH=${PATH}:`go env GOPATH`/bin
+  echo $PATH
+  ls `go env GOPATH`/bin
 fi
 
 # build using gopherjs

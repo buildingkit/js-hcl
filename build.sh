@@ -8,11 +8,11 @@ else
   export GOPHERJS_GOROOT="$(go env GOROOT)"
   export PATH=${PATH}:`go env GOPATH`/bin
   echo $PATH
-  ls `go env GOPATH`/bin
 fi
 
 # build using gopherjs
 go mod vendor
+ls `go env GOPATH`/bin
 gopherjs build ./src -o dist/index.js -m
 
 # minify using uglifyjs

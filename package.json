@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "./build.sh",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "keywords": [
     "parse",
@@ -19,13 +19,14 @@
     "url": "https://github.com/buildingkit/js-hcl"
   },
   "devDependencies": {
-    "jest": "^26.4.0",
-    "uglify-js": "^3.10.1"
-  },
-  "dependencies": {
-    "@babel/core": "^7.11.1",
+    "@babel/core": "^7.11.6",
     "@jitesoft/babel-preset-main": "^2.5.1",
     "babel-jest": "^26.3.0",
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "jest": "^26.4.2",
+    "uglify-js": "^3.10.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

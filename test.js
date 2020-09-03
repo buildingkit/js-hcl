@@ -1,7 +1,7 @@
 import hcl from './dist';
 
 describe('hcl', () => {
-  test('parse hcl', () => {
+  it('should parse hcl', () => {
     hcl
       .parse(
         `service {
@@ -13,7 +13,7 @@ describe('hcl', () => {
       });
   });
 
-  test('stringify obj', () => {
+  it('should stringify obj', () => {
     hcl
       .stringify({
         service: {

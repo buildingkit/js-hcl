@@ -1,5 +1,9 @@
 #!/bin/bash
 
+DIST_DIR="dist"
+
+if [ -d "$DIST_DIR" ]; then rm -Rf $DIST_DIR; fi
+
 go get -u github.com/gopherjs/gopherjs
 
 if [[ -z "${CI}" ]]; then
@@ -14,6 +18,6 @@ else
 fi
 
 cd vendor && ln -s . src && cd ..
-GOPATH=vendor/ gopherjs build ./src -o dist/index.js
+GOPATH=vendor/ gopherjs build ./src -o $DIST_DIR/index.js
 
-$(npm bin)/uglifyjs --compress --mangle -o dist/index.js -- dist/index.js
+$(npm bin)/uglifyjs --compress --mangle -o $DIST_DIR/index.js -- $DIST_DIR/index.js

@@ -7,13 +7,15 @@ if [[ -z "${CI}" ]]; then
 else
   export GOPHERJS_GOROOT="$(go env GOROOT)"
   export PATH=${PATH}:`go env GOPATH`/bin
+  export SRCDIR=${GOPATH}/src/github.com/buildingkit/js-hcl
+  export GO111MODULE="on"
+  mkdir -p ${SRCDIR}
+  mv ${CI_PROJECT_DIR}/* ${SRCDIR}
+  cd ${SRCDIR}
 fi
 
-# build using gopherjs
-go get -u github.com/gopherjs/gopherjs
-export GO111MODULE=on
+GO111MODULE=off go get -u github.com/gopherjs/gopherjs
 go mod vendor
 gopherjs build ./src -o dist/index.js -m
 
-# minify using uglifyjs
 $(npm bin)/uglifyjs --compress --mangle -o dist/index.js -- dist/index.js

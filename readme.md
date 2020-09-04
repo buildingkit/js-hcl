@@ -1,6 +1,6 @@
 # hcl
 
-Parse and stringify HCL with JavaScript
+Parse and stringify HCL v1 with JavaScript
 
 ## example
 

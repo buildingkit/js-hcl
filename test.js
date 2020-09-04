@@ -1,27 +1,24 @@
-import hcl from './dist';
+let data = `service "name" "food" = {
+  foo = "bar"
+  boo = "foo"
 
-describe('hcl', () => {
-  it('should parse hcl', () => {
-    hcl
-      .parse(
-        `service {
-        key = "value"
-    }`
-      )
-      .then((obj) => {
-        expect(obj.service).toEqual([{ key: 'value' }]);
-      });
-  });
+  tag {
+    foo = "bar2"
+  }
+}`
 
-  it('should stringify obj', () => {
-    hcl
-      .stringify({
-        service: {
-          key: 'value',
-        },
-      })
-      .then((obj) => {
-        expect(obj.replace(/\s/g, '')).toEqual(`"service"={"key"="value"}`);
-      });
-  });
-});
+data = `resource "linode_instance" "example_linode" {
+  image = "linode/ubuntu18.04"
+  label = "example-linode"
+  region = "\${var.region}"
+  type = "g6-standard-1"
+  authorized_keys = [ "my-key" ]
+  root_pass = "example-password"
+}`
+
+console.log(data);
+
+const lexer = require('./lib/lexer')(data)
+
+const tokens = lexer.run();
+console.log(tokens);
